@@ -1,0 +1,17 @@
+(function (nodeRequire) {
+
+exports.tree = {};
+
+var tree = exports.tree;
+
+function require(arg) {
+    if (arg === '../lib/less') {
+        return less;
+    } else if (arg === './parser') {
+        return less;
+    } else if (arg.indexOf('.') === 0) {
+        return less[arg.split('/')[1]];
+    } else {
+        return nodeRequire(arg);
+    }
+};
